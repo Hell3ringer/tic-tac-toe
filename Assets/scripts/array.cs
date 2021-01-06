@@ -20,42 +20,38 @@ public class array : MonoBehaviour
         {
             ranlist.Add(i);
         }
-        btn.onClick.AddListener(delegate { if (cputurn) { randomAI(); } });
-        if (cputurn)
-        {
-            cpturn.SetActive(true);
-            playerturn.SetActive(false);
-        }
-        else
-        {
-            cpturn.SetActive(false);
-            playerturn.SetActive(true);
-        }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
         checkarr();
-        
-
-
+        if (cputurn) {
+            cpturn.SetActive(true);
+            playerturn.SetActive(false);
+            randomAI(); 
+        }
+        else
+        {
+            cpturn.SetActive(false);
+            playerturn.SetActive(true);
+        }
     }
     private void checkarr()
     {
         for (int i = 0; i < 9; i++) {
-            if(board.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == spo)
+            if (board.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == spo
+                //board.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text == "o"
+                )
             {
                 arr[i] = 'o';
                 ranlist.Remove(i);
             }
-            if (board.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == spx)
+            /*if (board.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == spx)
             {
                 arr[i] = 'x';
                 ranlist.Remove(i);
-            }
+            }*/
 
         }
         cputurn = false;
@@ -71,26 +67,21 @@ public class array : MonoBehaviour
         }
         if (count % 2 != 0)
         {
-            cputurn = true;
-            
+            cputurn = true;            
         }
     }
     private void randomAI()
     {
-        
-        
-        int randomnum = Random.Range(0, ranlist.Count);
-        Debug.Log(ranlist.Count + "randomnum: " + randomnum);
-        int r = ranlist[randomnum];
-        Debug.Log("r value :"+ r);
-       
-        
-        
-            board.transform.GetChild(r).gameObject.GetComponent<Image>().sprite = spx;
+        if (ranlist.Count != 0)
+        {
+            int randomnum = Random.Range(0, ranlist.Count);
+            Debug.Log(ranlist.Count + "randomnum: " + randomnum);
+            int r = ranlist[randomnum];
+            Debug.Log("r value :" + r);
+            board.transform.GetChild(r).gameObject.GetComponent<Animator>().Play("X animation");
+            //board.transform.GetChild(r).gameObject.GetComponent<Image>().sprite = spx;
             arr[r] = 'x';
-            
-
-        
-
+            ranlist.Remove(r);
+        }
     }
 }
