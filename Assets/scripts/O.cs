@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class O : MonoBehaviour
 {
     public Sprite spo,spnull;
+    
+    public AudioClip sound;
     public Button btn;
     public bool btnclked;
     
@@ -24,10 +26,12 @@ public class O : MonoBehaviour
     }
     public void changeimg()
     {
-        
+        Debug.Log("btn clicked");
+
         if (btn.GetComponent<Image>().sprite == spnull)
         {
-
+           
+            btn.GetComponent<AudioSource>().PlayOneShot(sound);
             btn.GetComponent<Animator>().Play("O animation");
             
             //btn.GetComponent<Image>().sprite = spo;

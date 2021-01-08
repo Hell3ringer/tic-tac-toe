@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class popup : MonoBehaviour
 {
-    //public GameObject popupui;
+    public TextMeshProUGUI mode;
     
     public Button mainmenu, reset;
     // Start is called before the first frame update
@@ -23,10 +24,18 @@ public class popup : MonoBehaviour
     }
     private void onreset()
     {
-        SceneManager.LoadScene(0);
+        if(mode.text == "hard mode")
+        {
+            SceneManager.LoadScene(1);
+        }
+        if (mode.text == "easy mode")
+        {
+            SceneManager.LoadScene(0);
+        }
+
     }
     private void onmain()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

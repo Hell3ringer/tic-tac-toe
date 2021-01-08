@@ -8,6 +8,7 @@ public class array : MonoBehaviour
     public GameObject board;
     public Sprite spx,spo;
     public Button btn;
+    public GameObject popup;
     public bool cputurn = false;
     public GameObject cpturn, playerturn;
     private List<int> ranlist = new List<int>();
@@ -26,7 +27,7 @@ public class array : MonoBehaviour
     void Update()
     {
         checkarr();
-        if (cputurn) {
+        if (cputurn && !popup.activeInHierarchy) {
             cpturn.SetActive(true);
             playerturn.SetActive(false);
             //Invoke("randomAI", 5);

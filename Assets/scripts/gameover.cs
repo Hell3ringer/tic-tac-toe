@@ -29,6 +29,7 @@ public class gameover : MonoBehaviour
     private void Pwin()
     {
         int count = 0;
+        bool flag = true;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -134,6 +135,7 @@ public class gameover : MonoBehaviour
 
                     winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(i).gameObject.SetActive(true);
+                    popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
 
 
@@ -143,6 +145,7 @@ public class gameover : MonoBehaviour
 
                     winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(i + 3).gameObject.SetActive(true);
+                    popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
                 if (sum3 == 3)
@@ -150,6 +153,7 @@ public class gameover : MonoBehaviour
 
                     winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(6).gameObject.SetActive(true);
+                    popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
                 if (sum4 == 3)
@@ -157,12 +161,13 @@ public class gameover : MonoBehaviour
 
                     winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(7).gameObject.SetActive(true);
+                    popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
             }
 
         }
-        bool flag = true;
+        
         for(int i = 0; i < 3; i++)
         {
             for(int j = 0; j < 3; j++)
@@ -173,8 +178,13 @@ public class gameover : MonoBehaviour
                 }
             }
         }
+        if (popup.activeInHierarchy)
+        {
+            flag = false;
+        }
         if (flag)
         {
+
             winnername.text = "draw ...";            
             popup.SetActive(true);
             popup.GetComponent<Animator>().Play("popup animation");
