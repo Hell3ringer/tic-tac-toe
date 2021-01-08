@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class gameover : MonoBehaviour
 {
     public GameObject board,winningline,popup;
     public Sprite spo,spx;
+    public TextMeshProUGUI winnername;
     private string[,] arr = new string[3,3] { { "e", "e", "e" },{ "e", "e", "e", }, { "e", "e", "e", } };
     private string[] winarr = new string[8] { "h1", "h2", "h3", "v1", "v2", "v3", "d1", "d2" };
 
@@ -70,7 +72,8 @@ public class gameover : MonoBehaviour
                 if (sum1 == 3 )
                 {
                     
-                    Debug.Log("player wins..... ");
+                   
+                    winnername.text = "player wins ...";
                     winningline.transform.GetChild(i).gameObject.SetActive(true);
                     popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
@@ -78,7 +81,8 @@ public class gameover : MonoBehaviour
                 if (sum2 == 3)
                 {
                     
-                    Debug.Log("player wins..... ");
+                    
+                    winnername.text = "player wins ...";
                     winningline.transform.GetChild(i + 3).gameObject.SetActive(true);
                     popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
@@ -86,7 +90,8 @@ public class gameover : MonoBehaviour
                 if (sum3 == 3)
                 {
                     
-                    Debug.Log("player wins..... ");
+                    
+                    winnername.text = "player wins ...";
                     winningline.transform.GetChild(6).gameObject.SetActive(true);
                     popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
@@ -94,7 +99,8 @@ public class gameover : MonoBehaviour
                 if (sum4 == 3)
                 {
                     
-                    Debug.Log("player wins..... ");
+                    
+                    winnername.text = "player wins ...";
                     winningline.transform.GetChild(7).gameObject.SetActive(true);
                     popup.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
@@ -126,7 +132,7 @@ public class gameover : MonoBehaviour
                 if (sum1 == 3)
                 {
 
-                    Debug.Log("cpu wins..... ");
+                    winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(i).gameObject.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
 
@@ -135,21 +141,21 @@ public class gameover : MonoBehaviour
                 if (sum2 == 3)
                 {
 
-                    
+                    winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(i + 3).gameObject.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
                 if (sum3 == 3)
                 {
 
-                    
+                    winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(6).gameObject.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
                 if (sum4 == 3)
                 {
 
-                    
+                    winnername.text = "cpu wins ...";
                     winningline.transform.GetChild(7).gameObject.SetActive(true);
                     popup.GetComponent<Animator>().Play("popup animation");
                 }
