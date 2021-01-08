@@ -10,7 +10,7 @@ public class array : MonoBehaviour
     public Button btn;
     public bool cputurn = false;
     public GameObject cpturn, playerturn;
-    public List<int> ranlist = new List<int>();
+    private List<int> ranlist = new List<int>();
     int count;
     private char[] arr = new char[9] {  'e', 'e', 'e' ,  'e', 'e', 'e' ,  'e', 'e', 'e' };
     // Start is called before the first frame update
@@ -29,7 +29,8 @@ public class array : MonoBehaviour
         if (cputurn) {
             cpturn.SetActive(true);
             playerturn.SetActive(false);
-            randomAI(); 
+            //Invoke("randomAI", 5);
+            randomAI();
         }
         else
         {
@@ -72,12 +73,13 @@ public class array : MonoBehaviour
     }
     private void randomAI()
     {
+        
         if (ranlist.Count != 0)
         {
             int randomnum = Random.Range(0, ranlist.Count);
-            Debug.Log(ranlist.Count + "randomnum: " + randomnum);
+            //Debug.Log(ranlist.Count + "randomnum: " + randomnum);
             int r = ranlist[randomnum];
-            Debug.Log("r value :" + r);
+            //Debug.Log("r value :" + r);
             board.transform.GetChild(r).gameObject.GetComponent<Animator>().Play("X animation");
             //board.transform.GetChild(r).gameObject.GetComponent<Image>().sprite = spx;
             arr[r] = 'x';
